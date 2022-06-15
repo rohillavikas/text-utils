@@ -31,10 +31,23 @@ setalert(null)
 
   }
 
-  const toggleMode = ()=>{
+  const removeBodyClasses = ()=>{
+document.body.classList.remove("bg-light")
+document.body.classList.remove("bg-dark")
+document.body.classList.remove("bg-success")
+document.body.classList.remove("bg-danger")
+document.body.classList.remove("bg-warning")
+  }
+  
+  const toggleMode = (cls)=>{
+  
+    console.log(cls);
+    removeBodyClasses();
+    document.body.classList.add("bg-"+cls)
     if(mode === 'dark'){
       setMode('light')
       document.body.style.backgroundColor = "white"
+      
       showAlert("Dark mode has been enabled", "success")
     }else{
       setMode('dark')
@@ -42,17 +55,11 @@ setalert(null)
       showAlert("Light mode has been enabled", "success")
     }
   }
-const bgChange = ()=>{
-document.querySelector(".badge")
-  
-
-
-}
 
   return (
     <>
        <Router>
-        <Navbar title="TextUtiles" about="About" mode={mode} toggleMode={toggleMode} bgChange={bgChange}/>
+        <Navbar title="TextUtiles" about="About" mode={mode} toggleMode={toggleMode}/>
           <Alert alert={alert}/>
           <div className="container my-5">
 
